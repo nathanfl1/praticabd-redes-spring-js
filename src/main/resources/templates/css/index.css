@@ -16,7 +16,7 @@ body{
 h1{
     text-align: center;
 }
-input, select{
+input, select, textarea{
     margin-bottom: 5%;
 }
 button{
@@ -37,4 +37,8 @@ button{
 }
 select{
     font-size: x-large;
+}
+#descricao{
+    height: 100px !important;
+    width: 300px !important;
 }

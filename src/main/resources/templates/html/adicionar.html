@@ -9,12 +9,42 @@
 </head>
 
 <body>
-    <form>
-        <input matInput placeholder="" name="ip" [(ngModel)]="ip" required
-            pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
-            [disabled]="data.btnDisabled" />
-        <input type="submit" value="Submit" />
-    </form>
+    <h1>Adicionar dispositivo</h1>
+
+    <div class="centralizar">
+        <form>
+            <label>Nome do dispositivo:</label>
+            <input type="text" id="nome">
+            <br>
+            <label>Tipo do dispositivo:</label>
+            <select id="tipo">
+                <option value="Computador">Computador</option>
+                <option value="Dispositivo móvel">Dispositivo móvel</option>
+                <option value="Gateway">Gateway</option>
+                <option value="Firewall">Firewall</option>
+                <option value="Switch">Switch</option>
+            </select>
+            <br>
+            <label>Endereço IP:</label>
+            <input type="text" id="ip">
+            <br>
+            <label>Endereço MAC:</label>
+            <input type="text" id="mac" />
+            <br>
+            <label>Descrição do dispositivo:</label>
+            <input type="text" id="descricao">
+            <br>
+            <label>Localização física do dispositivo:</label>
+            <input id="localizacao"></input>
+            <br>
+        </form>
+    </div>
+    <p id="mensagem" hidden>Preencha todos os campos!</p>
+    <p id="mensagem2" hidden>Preencha os campos IP e MAC corretamente!</p>
+    <p id="mensagem3" hidden>O endereço IP ou o MAC já existem no sistema!</p>
+    <button id="enviar">Enviar</button>
+
+    <script src="js/adicionar.js"></script>
 </body>
 
 </html>
