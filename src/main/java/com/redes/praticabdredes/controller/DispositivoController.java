@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,22 @@ public class DispositivoController {
 
     public List<Dispositivo> listaDispositivos(){
        return template.query("SELECT * FROM dispositivo p", new RowMapper<Dispositivo>() {
+        @Override
+        public Dispositivo mapRow(ResultSet rs, int rownumber) throws SQLException {
+            Dispositivo e = new Dispositivo();
+            e.setNome(rs.getString(2));
+            e.setMac(rs.getString(3));
+            e.setIp(rs.getString(4));
+            e.setDescricao(rs.getString(5));
+            e.setLocalizacao(rs.getString(6));
+            e.setTipo(rs.getString(7));
+          return e;
+        }
+      });
+    }
+    @GetMapping("/api/lista")
+    public List<Dispositivo> listaDispositivosOrdenada(){
+       return template.query("SELECT * FROM dispositivo p ORDER BY p.tipo", new RowMapper<Dispositivo>() {
         @Override
         public Dispositivo mapRow(ResultSet rs, int rownumber) throws SQLException {
             Dispositivo e = new Dispositivo();

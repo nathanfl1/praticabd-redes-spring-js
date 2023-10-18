@@ -15,4 +15,9 @@ public class HomeController {
     {
         return "/html/adicionar.html";
     }
+    @GetMapping("/lista")
+    public String lista()
+    {
+        return "/html/list.html";
+    }
 }
